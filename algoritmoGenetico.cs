@@ -16,6 +16,7 @@ namespace iac
 
         public AlgoritmoGenetico(algoritmoGenetico tipo)
         {
+           
             algoritmo = tipo;
             poblacion = new Poblacion(tamañoPoblacion);
             poblacion.generarPoblacion(tamañoPoblacion);
