@@ -24,7 +24,7 @@ namespace iac
             this.individuo = individuo;
         }
 
-        public int[] GetobtenerSolucion => solution;
+        public int[] obtenerSolucion => solution;
 
         public int tamañoSolution
         {
@@ -103,10 +103,10 @@ namespace iac
                 for (int j = i + 1; j < tamañoSolution; j++) {
                     // Create T exchanging i and j gene
                     Individuo T = new Individuo(S);
-                    T.GetobtenerSolucion()[i] = S.tamañoSolution()[j];
-                    T.tamañoSolution()[j] = S.tamañoSolution()[i];
-                    T.updateWeight(i, j, S.GetobtenerSolucion()); // calculate fitness of new solution
-                    if (T.getFitness() < S.getFitness()) { // if new solution is better than older updates
+                    T.obtenerSolucion[i] = S.obtenerSolucion[j];
+                    T.tamañoSolution[j] = S.tamañoSolution[i];
+                    T.updateWeight(i, j, S.obtenerSolucion; // calculate fitness of new solution
+                    if (T.getFitness < S.getFitness { // if new solution is better than older updates
                         S = new Individuo(T);
                     }
                 }
@@ -115,10 +115,6 @@ namespace iac
         return S.calculateweight();
     }
 
-        private object tamañoSolution()
-        {
-            throw new NotImplementedException();
-        }
 
         private void initializeMatrix(int i,int j){
         Random rand=new Random();
