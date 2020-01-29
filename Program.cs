@@ -6,68 +6,68 @@ namespace iac
 
     public class Program
     {
-        public static void main(String[] args) throws FileNotFoundException {
-        boolean todoStandard = false;
-        boolean todoBaldwinian = false;
-        boolean todoLamarckian = true;
+       static void Main(string[] args) {
+        bool todoStandard = false;
+        bool todoBaldwinian = false;
+        bool todoLamarckian = true;
 
         long iniStandard, finStandard, iniBaldwinian, finBaldwinian, iniLamarckian, finLamarckian;
 
-        EA standard, baldwinian, lamarckian;
+        AlgoritmoGenetico standard, baldwinian, lamarckian;
 
-        System.out.println("Reading matrices...");
+        Console.WriteLine("Reading matrices...");
         Matrices.setInput(new File("data/qap/tai256c.dat"));
 
         if (todoStandard) {
-            System.out.println("*****************************************************************************************");
+            Console.WriteLine("*****************************************************************************************");
 
-            System.out.println("Building standard algorithm...");
-            standard = new EA(EAType.STANDARD);
-            System.out.println("Executing standard algorithm...");
+            Console.WriteLine("Building standard algorithm...");
+            standard = new AlgoritmoGenetico(algoritmoGenetico.estándar);
+            Console.WriteLine("Executing standard algorithm...");
             iniStandard = System.currentTimeMillis();
-            standard.execute();
+            standard.Ejecutar();
             finStandard = System.currentTimeMillis();
 
-            System.out.println("*****************************************************************************************");
+            Console.WriteLine("*****************************************************************************************");
 
-            System.out.println("STANDARD");
-            System.out.println("Time: " + (finStandard - iniStandard) / 1000);
-            System.out.println("Solution: " + Arrays.toString(standard.getFittest().getSolution()));
-            System.out.println("Fitness: " + standard.getFittest().getFitness());
+            Console.WriteLine("STANDARD");
+            Console.WriteLine("Time: " + (finStandard - iniStandard) / 1000);
+            Console.WriteLine("Solution: " + Arrays.toString(standard.getFittest().getSolution()));
+            Console.WriteLine("Fitness: " + standard.getFittest().getFitness());
         }
 
         if (todoBaldwinian) {
-            System.out.println("*****************************************************************************************");
+            Console.WriteLine("*****************************************************************************************");
 
-            System.out.println("Building baldwinian algorithm...");
-            baldwinian = new EA(EAType.BALDWINIAN);
-            System.out.println("Executing baldwinian algorithm...");
+            Console.WriteLine("Building baldwinian algorithm...");
+            baldwinian = new AlgoritmoGenetico(algoritmoGenetico.baldwiniana);
+            Console.WriteLine("Executing baldwinian algorithm...");
             iniBaldwinian = System.currentTimeMillis();
-            baldwinian.execute();
+            baldwinian.Ejecutar();
             finBaldwinian = System.currentTimeMillis();
 
-            System.out.println("*****************************************************************************************");
+            Console.WriteLine("*****************************************************************************************");
 
-            System.out.println("BALDWINIAN");
-            System.out.println("Time: " + (finBaldwinian - iniBaldwinian) / 1000);
-            System.out.println("Solution: " + Arrays.toString(baldwinian.getFittest().getSolution()));
-            System.out.println("Fitness: " + baldwinian.getFittest().getFitness());
+            Console.WriteLine("BALDWINIAN");
+            Console.WriteLine("Time: " + (finBaldwinian - iniBaldwinian) / 1000);
+            Console.WriteLine("Solution: " + Arrays.toString(baldwinian.getFittest().getSolution()));
+            Console.WriteLine("Fitness: " + baldwinian.getFittest().getFitness());
         }
 
         if (todoLamarckian) {
-            System.out.println("*****************************************************************************************");
+            Console.WriteLine("*****************************************************************************************");
 
-            System.out.println("Building lamarckian algorithm...");
-            lamarckian = new EA(EAType.LAMARCKIAN);
-            System.out.println("Executing lamarckian algorithm...");
+            Console.WriteLine("Building lamarckian algorithm...");
+            lamarckian = new AlgoritmoGenetico(algoritmoGenetico.lamarckiana);
+            Console.WriteLine("Executing lamarckian algorithm...");
             iniLamarckian = System.currentTimeMillis();
-            lamarckian.execute();
+            lamarckian.Ejecutar();
             finLamarckian = System.currentTimeMillis();
 
-            System.out.println("LAMARCKIAN");
-            System.out.println("Time: " + (finLamarckian - iniLamarckian) / 1000);
-            System.out.println("Solution: " + Arrays.toString(lamarckian.getFittest().getSolution()));
-            System.out.println("Fitness: " + lamarckian.getFittest().getFitness());
+            Console.WriteLine("LAMARCKIAN");
+            Console.WriteLine("Time: " + (finLamarckian - iniLamarckian) / 1000);
+            Console.WriteLine("Solution: " + Arrays.toString(lamarckian.getFittest().getSolution()));
+            Console.WriteLine("Fitness: " + lamarckian.getFittest().getFitness());
         }
     }
     }

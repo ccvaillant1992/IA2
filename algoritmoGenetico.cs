@@ -14,9 +14,7 @@ namespace iac
         private algoritmoGenetico algoritmo; //Tipo de Algoritmo Genetico
         private Poblacion poblacion; //Poblacion actual
 
-        private AlgoritmoGenetico tipo;
-
-        public void algoritmoGenetico(algoritmoGenetico tipo)
+        public AlgoritmoGenetico(algoritmoGenetico tipo)
         {
             algoritmo = tipo;
             poblacion = new Poblacion(tamañoPoblacion);
