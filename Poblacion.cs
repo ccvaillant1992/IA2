@@ -30,17 +30,16 @@ namespace iac
             return fitprueba;
         }
 
-        public void calcularMejorfitness(algoritmoGenetico tipo)
+        public void calcularMejorFitness(algoritmoGenetico tipo)
         {
-            foreach(Individuo v in poblacion)
-                v.calcularMejorfitness(tipo);
+            foreach (Individuo v in poblacion)
+              v.calcularMejorfitness(tipo);   
         }
 
-      
-    
-     
+        
 
-       
+
+
 
     }
 }

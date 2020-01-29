@@ -21,7 +21,7 @@ namespace iac
             algoritmo = tipo;
             poblacion = new Poblacion(tamañoPoblacion);
             poblacion.generarPoblacion(tamañoPoblacion);
-            poblacion.calcularMejorfitness(tipo);
+            poblacion.calcularMejorFitness(tipo);
         }
 
         public Individuo obtenerFitness() => poblacion.obtenerMejorfitness();
@@ -40,7 +40,7 @@ namespace iac
                     do
                     {
                         padre2 = seleccionarTorneo();
-                    } while (padre1.GetobtenerSolucion == padre2.GetobtenerSolucion);
+                    } while (padre1.obtenerSolucion == padre2.obtenerSolucion);
 
                     Individuo[] hijos = crossover(padre1, padre2);
 
@@ -51,7 +51,7 @@ namespace iac
                     nuevapob.obtnerPoblacion()[2 * j + 1] = new Individuo(hijos[1]);
                 }
                 nuevapob.obtnerPoblacion()[0] = new Individuo(poblacion.obtenerMejorfitness());
-                nuevapob.calcularMejorfitness(tipo);
+                nuevapob.calcularMejorFitness(algoritmo);
                 poblacion = nuevapob;
                 Console.Writeline("Generacio:" + (i + 1));
                 Console.Writeline("\tSolution:" + Arrays.toString(poblacion.obtenerMejorfitness.obtenerSolucion()));
@@ -60,21 +60,21 @@ namespace iac
             }
         }
 
-        public void seleccionarTorneo()
+        public Individuo seleccionarTorneo()
         {
             Random r = new Random();
             HashSet<int> participantes = new HashSet<int>();
             Poblacion torneo = new Poblacion(cantTorneo);
             for (int i = 0; i < cantTorneo; i++)
             {
-                int participantes;
+                int participante;
                 do
                 {
-                    participantes = r.Next(cantPoblacion);
-                } while (participantes.contiene(participantes));
-                torneo.obtnerPoblacion()[i] = new Individuo(poblacion.obtnerPoblacion()[participantes]);
+                    participante = r.Next(tamañoPoblacion);
+                } while (participantes.Contains(participante));
+                torneo.obtnerPoblacion()[i] = new Individuo(poblacion.obtnerPoblacion()[participante]);
             }
-            return torneo.obtenerFitness;
+            return torneo.obtenerMejorfitness();
         }
 
         private Individuo[] crossover(Individuo padre1, Individuo padre2)
@@ -102,34 +102,34 @@ namespace iac
 
             for (int i = posicion1; i < posicion2; i++)
             {
-                hijos[0].obtenerSolucion()[i] = padre1.obtenerSolucion()[i];
-                Individuohijo0.Add(hijos[0].obtenerSolucion()[i]);
+                hijos[0].obtenerSolucion[i] = padre1.obtenerSolucion[i];
+                Individuohijo0.Add(hijos[0].obtenerSolucion[i]);
 
-                hijos[1].obtenerSolucion()[i] = padre1.obtenerSolucion()[i];
-                Individuohijo1.Add(hijos[1].obtenerSolucion()[i]);
+                hijos[1].obtenerSolucion[i] = padre1.obtenerSolucion[i];
+                Individuohijo1.Add(hijos[1].obtenerSolucion[i]);
             }
-            for (int i = 0; i < distance.Length; i++)
+            for (int i = 0; i < Matrices.getlocations; i++)
             {
-                if (posicion1 || i >= posicion2)
+                if (i<posicion1 || i >= posicion2)
                 {
                     int iterador = 0;
-                    while (Individuohijo0.Contains(padre1.obtenerSolucion()[iterador]))
+                    while (Individuohijo0.Contains(padre1.obtenerSolucion[iterador]))
                     {
                         iterador++;
                     }
-                    hijos[0].obtenerSolucion()[i] = padre1.obtenerSolucion()[iterador];
-                    Individuohijo0.Add(padre1.obtenerSolucion()[iterador]);
+                    hijos[0].obtenerSolucion[i] = padre1.obtenerSolucion[iterador];
+                    Individuohijo0.Add(padre1.obtenerSolucion[iterador]);
 
                     iterador = 0;
-                    while (Individuohijo1.Contains(padre0.obtenerSolucion()[iterador]))
+                    while (Individuohijo1.Contains(padre1.obtenerSolucion[iterador]))
                     {
                         iterador++;
                     }
-                    hijos[1].obtenerSolucion()[i] = padre0.obtenerSolucion()[iterador];
-                    Individuohijo1.Add(padre0.obtenerSolucion()[iterador]);
+                    hijos[1].obtenerSolucion[i] = padre1.obtenerSolucion[iterador];
+                    Individuohijo1.Add(padre1.obtenerSolucion[iterador]);
                 }
             }
-            
+            return hijos;
 
         }
 
@@ -142,7 +142,7 @@ namespace iac
             {
                 return;
             }
-            for (int i = 0; i < .Length; i++)
+            for (int i = 0; i < Matrices.getlocations; i++)
             {
                 prob = r.NextDouble();
                 if (prob < probMutacGenes)
@@ -150,7 +150,7 @@ namespace iac
                     int j;
                     do
                     {
-                        j = r.Next(distance.Length);
+                        j = r.Next(Matrices.getlocations);
                     } while (j == i);
                     individuo.mutate(i, j);
                 }
