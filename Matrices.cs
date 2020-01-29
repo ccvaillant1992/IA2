@@ -9,9 +9,9 @@ namespace iac
 
         public static int getlocations => locations;
 
-        public static int getdistance => distance;
+        public static int[,] getdistance => distance;
 
-        public static int getweights => weights;
+        public static int[,] getweights => weights;
 
         public static void setInput(File file)
         {

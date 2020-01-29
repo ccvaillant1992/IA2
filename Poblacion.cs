@@ -22,19 +22,18 @@ namespace iac
 
            public Individuo obtenerMejorfitness()      
         {
-            Individuo fitprueba= new Individuo(poblacion[0]);
+            Individuo fitprueba= poblacion[0];
             for(int i=1; i<poblacion.Length; i++){
-                if(poblacion[i].obtenerFitness< fitprueba.obtenerFitness)
-                fitprueba=individuos[i];
+                if(poblacion[i].obtenerFitness() < fitprueba.obtenerFitness())
+                fitprueba=poblacion[i];
             }
             return fitprueba;
-            
         }
 
-        public void calcularMejorfitness(AlgoritmoGenetico tipo)
+        public void calcularMejorfitness(algoritmoGenetico tipo)
         {
             foreach(Individuo v in poblacion)
-            v.calcularMejorfitness(tipo);
+                v.calcularMejorfitness(tipo);
         }
 
       
