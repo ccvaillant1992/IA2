@@ -32,8 +32,8 @@ namespace iac
 
             Console.WriteLine("STANDARD");
             Console.WriteLine("Time: " + (finStandard - iniStandard) / 1000);
-            Console.WriteLine("Solution: " + Arrays.toString(standard.getFittest().getSolution()));
-            Console.WriteLine("Fitness: " + standard.getFittest().getFitness());
+            Console.WriteLine("Solution: " + Arrays.toString(standard.obtenerFitness().obtenerSolucion));
+            Console.WriteLine("Fitness: " + standard.obtenerFitness().getFitness());
         }
 
         if (todoBaldwinian) {
