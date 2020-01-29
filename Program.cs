@@ -33,7 +33,7 @@ namespace iac
             Console.WriteLine("STANDARD");
             Console.WriteLine("Time: " + (finStandard - iniStandard) / 1000);
             Console.WriteLine("Solution: " + Arrays.toString(standard.obtenerFitness().obtenerSolucion));
-            Console.WriteLine("Fitness: " + standard.obtenerFitness().getFitness());
+            Console.WriteLine("Fitness: " + standard.obtenerFitness().obtenerFitness());
         }
 
         if (todoBaldwinian) {
@@ -50,8 +50,8 @@ namespace iac
 
             Console.WriteLine("BALDWINIAN");
             Console.WriteLine("Time: " + (finBaldwinian - iniBaldwinian) / 1000);
-            Console.WriteLine("Solution: " + Arrays.toString(baldwinian.getFittest().getSolution()));
-            Console.WriteLine("Fitness: " + baldwinian.getFittest().getFitness());
+            Console.WriteLine("Solution: " + Arrays.toString(baldwinian.obtenerFitness().obtenerSolucion));
+            Console.WriteLine("Fitness: " + baldwinian.obtenerFitness().obtenerFitness());
         }
 
         if (todoLamarckian) {
@@ -66,8 +66,8 @@ namespace iac
 
             Console.WriteLine("LAMARCKIAN");
             Console.WriteLine("Time: " + (finLamarckian - iniLamarckian) / 1000);
-            Console.WriteLine("Solution: " + Arrays.toString(lamarckian.getFittest().getSolution()));
-            Console.WriteLine("Fitness: " + lamarckian.getFittest().getFitness());
+            Console.WriteLine("Solution: " + Arrays.toString(lamarckian.obtenerFitness().obtenerSolucion));
+            Console.WriteLine("Fitness: " + lamarckian.obtenerFitness().obtenerFitness());
         }
     }
     }
