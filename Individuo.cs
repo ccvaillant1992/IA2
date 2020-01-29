@@ -15,7 +15,7 @@ namespace iac
    {
        fitness=0;
        solution=new int[tamaño];
-       fitness=0;
+  
       
    }
 
@@ -104,15 +104,15 @@ namespace iac
                     // Create T exchanging i and j gene
                     Individuo T = new Individuo(S);
                     T.obtenerSolucion[i] = S.obtenerSolucion[j];
-                    T.tamañoSolution[j] = S.tamañoSolution[i];
-                    T.updateWeight(i, j, S.obtenerSolucion; // calculate fitness of new solution
-                    if (T.getFitness < S.getFitness { // if new solution is better than older updates
+                    T.obtenerSolucion[j] = S.obtenerSolucion[i];
+                    T.updateWeight(i, j, S.obtenerSolucion); // calculate fitness of new solution
+                    if (T.obtenerFitness() < S.obtenerFitness()) { // if new solution is better than older updates
                         S = new Individuo(T);
                     }
                 }
             }
         } while (S.obtenerFitness() < mejor.obtenerFitness());
-        return S.calculateweight();
+        return S.obtenerSolucion;
     }
 
 
