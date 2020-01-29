@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿using System;
 
 namespace iac
@@ -29,21 +28,3 @@ namespace iac
         }
     }
 }
-=======
-﻿using System;
-
-namespace iac
-{
-
-    public class Program
-    {
-        static void Main(string[] args)
-        {
-            Individuo ind=new Individuo(10);//creo un individuo
-            ind.updateWeight(7, 9); //Para la mutacion 
-            Poblacion poblacion=new Poblacion(10,20); //Creo una poblacion
-            Console.WriteLine("Hello World!");
-        }
-    }
-}
->>>>>>> 885ce6df3a5824ee99f50d739bb39f20094757d2
