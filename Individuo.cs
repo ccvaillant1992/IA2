@@ -5,15 +5,24 @@ namespace iac
     public class Individuo{
 
     private int[] solution { get; set; } //vector solucion
-    private int[] mejorSolution;
+
+        private const int V = 0;
+        private int[] mejorSolution;
     private int fitness;
-   public Individuo(int tamaño)
+        private Individuo individuo;
+
+        public Individuo(int tamaño)
    {
        fitness=0;
        solution=new int[tamaño];
        fitness=0;
       
    }
+
+        public Individuo(Individuo individuo)
+        {
+            this.individuo = individuo;
+        }
 
         public int[] GetobtenerSolucion => solution;
 
@@ -63,7 +72,55 @@ namespace iac
        }
    }
 
-   private void initializeMatrix(int i,int j){
+      public void calcularMejorfitness(algoritmoGenetico tipo)
+       {
+        if (tipo == algoritmoGenetico.baldwiniana || tipo == algoritmoGenetico.lamarckiana) {
+            if (mejorSolution == null) {
+                mejorSolution = busquedaLocal();
+                if (tipo == algoritmoGenetico.lamarckiana) {
+                    solution = mejorSolution;
+                }
+            }
+            fitness = V;
+            for (int i = 0; i < Matrices.getlocations; i++) {
+                for (int j = 0; j < Matrices.getlocations; j++) {
+                    fitness += Matrices.getweights[i,j] * Matrices.getdistance[mejorSolution[i],mejorSolution[j]];
+                }
+            }
+        } else {
+            generateSolution();
+        }
+    }
+
+     private int[] busquedaLocal() {
+        Individuo mejor;
+        Individuo S = new Individuo(this);
+        S.generateSolution();
+        do {
+            mejor = new Individuo(S); // save best solution by now
+               
+                for (int i = 0; i < tamañoSolution; i++) {
+                for (int j = i + 1; j < tamañoSolution; j++) {
+                    // Create T exchanging i and j gene
+                    Individuo T = new Individuo(S);
+                    T.GetobtenerSolucion()[i] = S.tamañoSolution()[j];
+                    T.tamañoSolution()[j] = S.tamañoSolution()[i];
+                    T.updateWeight(i, j, S.GetobtenerSolucion()); // calculate fitness of new solution
+                    if (T.getFitness() < S.getFitness()) { // if new solution is better than older updates
+                        S = new Individuo(T);
+                    }
+                }
+            }
+        } while (S.obtenerFitness() < mejor.obtenerFitness());
+        return S.calculateweight();
+    }
+
+        private object tamañoSolution()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void initializeMatrix(int i,int j){
         Random rand=new Random();
         Matrices.getweights[i,j]=rand.Next(0,100);//valor de peso aleatorio
         Matrices.getdistance[i,j]=rand.Next(0,100);//valor de distancia aleatoria
@@ -79,7 +136,7 @@ namespace iac
              fitness+= Matrices.getweights[pos1,i]*Matrices.getdistance[solution[pos1],solution[i]];
 
              fitness-= Matrices.getweights[pos2,i]*Matrices.getdistance[oldSolution[pos2],oldSolution[i]];
-            fitness+= Matrices.getweights[pos2,i]*Matrices.getdistance[solution[pos2],solution[k]];
+            fitness+= Matrices.getweights[pos2,i]*Matrices.getdistance[solution[pos2],solution[i]];
           
 
            if(i!=pos1 && i!=pos2){
