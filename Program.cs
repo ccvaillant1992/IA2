@@ -32,7 +32,7 @@ namespace iac
 
             Console.WriteLine("STANDARD");
             Console.WriteLine("Time: " + (finStandard - iniStandard) / 1000);
-            Console.WriteLine("Solution: " + Arrays.toString(standard.obtenerFitness().obtenerSolucion));
+            Console.WriteLine("Solution: " + standard.obtenerFitness().obtenerSolucion.ToString());
             Console.WriteLine("Fitness: " + standard.obtenerFitness().obtenerFitness());
         }
 
@@ -50,7 +50,7 @@ namespace iac
 
             Console.WriteLine("BALDWINIAN");
             Console.WriteLine("Time: " + (finBaldwinian - iniBaldwinian) / 1000);
-            Console.WriteLine("Solution: " + Arrays.toString(baldwinian.obtenerFitness().obtenerSolucion));
+            Console.WriteLine("Solution: " + baldwinian.obtenerFitness().obtenerSolucion.ToString());
             Console.WriteLine("Fitness: " + baldwinian.obtenerFitness().obtenerFitness());
         }
 
@@ -66,7 +66,7 @@ namespace iac
 
             Console.WriteLine("LAMARCKIAN");
             Console.WriteLine("Time: " + (finLamarckian - iniLamarckian) / 1000);
-            Console.WriteLine("Solution: " + Arrays.toString(lamarckian.obtenerFitness().obtenerSolucion));
+            Console.WriteLine("Solution: " + lamarckian.obtenerFitness().obtenerSolucion.ToString());
             Console.WriteLine("Fitness: " + lamarckian.obtenerFitness().obtenerFitness());
         }
     }
