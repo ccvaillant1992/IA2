@@ -24,9 +24,9 @@ namespace iac
             Console.WriteLine("Building standard algorithm...");
             standard = new AlgoritmoGenetico(algoritmoGenetico.estándar);
             Console.WriteLine("Executing standard algorithm...");
-            iniStandard = System.currentTimeMillis();
+            iniStandard = Environment.TickCount;
             standard.Ejecutar();
-            finStandard = System.currentTimeMillis();
+            finStandard = Environment.TickCount;
 
             Console.WriteLine("*****************************************************************************************");
 
@@ -42,9 +42,9 @@ namespace iac
             Console.WriteLine("Building baldwinian algorithm...");
             baldwinian = new AlgoritmoGenetico(algoritmoGenetico.baldwiniana);
             Console.WriteLine("Executing baldwinian algorithm...");
-            iniBaldwinian = System.currentTimeMillis();
+            iniBaldwinian = Environment.TickCount;
             baldwinian.Ejecutar();
-            finBaldwinian = System.currentTimeMillis();
+            finBaldwinian = Environment.TickCount;
 
             Console.WriteLine("*****************************************************************************************");
 
@@ -60,9 +60,9 @@ namespace iac
             Console.WriteLine("Building lamarckian algorithm...");
             lamarckian = new AlgoritmoGenetico(algoritmoGenetico.lamarckiana);
             Console.WriteLine("Executing lamarckian algorithm...");
-            iniLamarckian = System.currentTimeMillis();
+            iniLamarckian = Environment.TickCount;
             lamarckian.Ejecutar();
-            finLamarckian = System.currentTimeMillis();
+            finLamarckian = Environment.TickCount;
 
             Console.WriteLine("LAMARCKIAN");
             Console.WriteLine("Time: " + (finLamarckian - iniLamarckian) / 1000);
