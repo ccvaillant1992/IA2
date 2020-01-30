@@ -52,9 +52,9 @@ namespace iac
                 nuevapob.obtnerPoblacion()[0] = new Individuo(poblacion.obtenerMejorfitness());
                 nuevapob.calcularMejorFitness(algoritmo);
                 poblacion = nuevapob;
-                Console.Writeline("Generacio:" + (i + 1));
-                Console.Writeline("\tSolution:" + poblacion.obtenerMejorfitness().obtenerSolucion.ToString());
-                Console.Writeline("\tFitness:" + poblacion.obtenerMejorfitness().obtenerFitness());
+                Console.WriteLine("Generacio:" + (i + 1));
+                Console.WriteLine("\tSolution:" + poblacion.obtenerMejorfitness().obtenerSolucion.ToString());
+                Console.WriteLine("\tFitness:" + poblacion.obtenerMejorfitness().obtenerFitness());
 
             }
         }
