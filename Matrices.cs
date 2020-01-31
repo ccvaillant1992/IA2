@@ -13,10 +13,10 @@ namespace iac
 
         public static int[,] getweights => weights;
 
-        public static void setInput(File file)
+        public static void setInput(string file)
         {
             Scanner scanner=new Scanner(file);
-            locations= scanner.nextInt;
+            locations= scanner.nextInt();
             distance=new int[locations,locations];
             weights=new int[locations,locations];
 
@@ -24,7 +24,7 @@ namespace iac
             {
                 for(int j=0; j<locations; j++)
                 {
-                    distance[i,j]=scanner.nextInt;
+                    distance[i,j]=scanner.nextInt();
                 }
             }
             
@@ -32,7 +32,7 @@ namespace iac
             {
                 for(int j=0; j<locations; j++)
                 {
-                    weights[i,j]= scanner.nextInt;
+                    weights[i,j]= scanner.nextInt();
                 }
             }
         }

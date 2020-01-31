@@ -1,4 +1,4 @@
-﻿﻿using System;
+using System;
 
 using System.IO;
 namespace iac
@@ -6,7 +6,9 @@ namespace iac
 
     public class Program
     {
-       static void Main(string[] args) {
+        private const string V = @"data/qap/tai256c.dat/bur26a.dat";
+
+        static void Main(string[] args) {
         bool todoStandard = false;
         bool todoBaldwinian = false;
         bool todoLamarckian = true;
@@ -15,8 +17,9 @@ namespace iac
 
         AlgoritmoGenetico standard, baldwinian, lamarckian;
 
-        Console.WriteLine("Reading matrices...");
-        Matrices.setInput(new File("data/qap/tai256c.dat"));
+
+    
+        Console.WriteLine("V");
 
         if (todoStandard) {
             Console.WriteLine("*****************************************************************************************");
