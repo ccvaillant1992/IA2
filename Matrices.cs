@@ -15,25 +15,31 @@ namespace iac
 
         public static void setInput(string file)
         {
-            Scanner scanner=new Scanner(file);
-            locations= scanner.nextInt();
-            distance=new int[locations,locations];
-            weights=new int[locations,locations];
+            Scanner scanner = new Scanner(file);
+            locations = NewMethod(scanner);
+            int[,] v = new int[locations, locations];
+            distance = v;
+            weights = v;
 
-            for(int i=0; i<locations; i++)
+            for (int i = 0; i < locations; i++)
             {
-                for(int j=0; j<locations; j++)
+                for (int j = 0; j < locations; j++)
                 {
-                    distance[i,j]=scanner.nextInt();
+                    distance[i, j] = scanner.nextInt();
                 }
             }
-            
-            for(int i=0; i<locations; i++)
+
+            for (int i = 0; i < locations; i++)
             {
-                for(int j=0; j<locations; j++)
+                for (int j = 0; j < locations; j++)
                 {
-                    weights[i,j]= scanner.nextInt();
+                    weights[i, j] = scanner.nextInt();
                 }
+            }
+
+            static int NewMethod(Scanner scanner)
+            {
+                return scanner.nextInt();
             }
         }
     }
