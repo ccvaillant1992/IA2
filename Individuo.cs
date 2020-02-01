@@ -19,7 +19,9 @@ namespace iac
       }
         public Individuo(Individuo individuo)
         {
-            this.individuo = individuo;
+            solution=new int[individuo.solution.Length];
+            individuo.solution.CopyTo(solution,0);
+            fitness=individuo.fitness;
         }
 
         public int[] obtenerSolucion => solution;
