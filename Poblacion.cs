@@ -13,7 +13,7 @@ namespace iac
             return poblacion;
         }
 
-        public void generarPoblacion(int tamaño){           //generar una poblacion de individuos al azar
+        public void generarPoblacion(int tamaño){      //generar una poblacion de individuos al azar
             for (int i = 0; i < poblacion.Length; i++)
             {
                 poblacion[i]=new Individuo(tamaño);

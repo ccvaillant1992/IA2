@@ -18,6 +18,8 @@ namespace iac
 
         AlgoritmoGenetico standard, baldwinian, lamarckian;
 
+        Matrices.loadData();
+
         if (todoStandard) {
             Console.WriteLine("*****************************************************************************************");
 
