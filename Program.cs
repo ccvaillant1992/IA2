@@ -8,7 +8,7 @@ namespace iac
     public class Program
     {
 
-        
+     
         static void Main(string[] args) {
         bool todoStandard = false;
         bool todoBaldwinian = false;
@@ -17,6 +17,9 @@ namespace iac
         long iniStandard, finStandard, iniBaldwinian, finBaldwinian, iniLamarckian, finLamarckian;
 
         AlgoritmoGenetico standard, baldwinian, lamarckian;
+
+        Dataset obj= new Dataset();
+        obj.loadData();
 
         if (todoStandard) {
             Console.WriteLine("*****************************************************************************************");
