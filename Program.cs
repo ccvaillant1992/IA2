@@ -18,9 +18,6 @@ namespace iac
 
         AlgoritmoGenetico standard, baldwinian, lamarckian;
 
-        Dataset obj= new Dataset();
-        obj.loadData();
-
         if (todoStandard) {
             Console.WriteLine("*****************************************************************************************");
 
