@@ -30,7 +30,12 @@ namespace iac
         {
             get
             {
-                return solution.Length;
+                return NewMethod();
+
+                int NewMethod()
+                {
+                    return solution.Length;
+                }
             }
         }
         public int obtenerFitness() => fitness;
