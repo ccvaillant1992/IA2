@@ -7,7 +7,8 @@ namespace iac
         {
             int c = 0;
             string line;
-            System.IO.StreamReader file = new System.IO.StreamReader(@"D:\archivo.txt");
+
+            System.IO.StreamReader file = new System.IO.StreamReader(@"qap.datos\bur26a.dat");
             int tamaño = 0;
 
             while ((line = file.ReadLine()) != null)
