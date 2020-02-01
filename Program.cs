@@ -22,10 +22,14 @@ namespace iac
         int c=0;
         string line ;
         System.IO.StreamReader file =new System.IO.StreamReader(@"D:\archivo.txt");
+        int tamaño=0;
 
         while((line = file.ReadLine()) != null)  
        {  
-         System.Console.WriteLine(line);  
+         
+        var values = (line.Split(' '));
+        tamaño=Int16.Parse(line);
+        System.Console.WriteLine(tamaño); 
          c++;  
        }  
   
@@ -33,7 +37,7 @@ namespace iac
        System.Console.WriteLine("There were {0} lines.", c);  
        // Suspend the screen.  
        System.Console.ReadLine(); 
-       Matrices.setInput(file);
+       
     
 
         if (todoStandard) {
