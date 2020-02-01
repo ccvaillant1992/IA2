@@ -99,7 +99,7 @@ namespace iac
 
      private int[] busquedaLocal() {
         Individuo mejor;
-        Individuo S = new Individuo(this);
+        Individuo S = new Individuo(solution.Length);
         S.generateSolution();
         do {
             mejor = new Individuo(S); // save best solution by now
