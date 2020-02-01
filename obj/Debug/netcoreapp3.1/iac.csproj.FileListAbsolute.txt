@@ -1,0 +1,11 @@
+d:\proyecto\bin\Debug\netcoreapp3.1\iac.exe
+D:\proyecto\bin\Debug\netcoreapp3.1\iac.deps.json
+D:\proyecto\bin\Debug\netcoreapp3.1\iac.runtimeconfig.json
+D:\proyecto\bin\Debug\netcoreapp3.1\iac.runtimeconfig.dev.json
+d:\proyecto\bin\Debug\netcoreapp3.1\iac.dll
+d:\proyecto\bin\Debug\netcoreapp3.1\iac.pdb
+d:\proyecto\obj\Debug\netcoreapp3.1\iac.csprojAssemblyReference.cache
+d:\proyecto\obj\Debug\netcoreapp3.1\iac.AssemblyInfoInputs.cache
+d:\proyecto\obj\Debug\netcoreapp3.1\iac.AssemblyInfo.cs
+d:\proyecto\obj\Debug\netcoreapp3.1\iac.dll
+d:\proyecto\obj\Debug\netcoreapp3.1\iac.pdb
