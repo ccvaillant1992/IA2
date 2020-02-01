@@ -13,7 +13,7 @@ namespace iac
 
         public static int[,] getweights => weights;
 
-        public static void setInput(string file)
+        public static void setInput(System.IO.StreamReader file)
         {
             Scanner scanner = new Scanner(file);
             locations = NewMethod(scanner);

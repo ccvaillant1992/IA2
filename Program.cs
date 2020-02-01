@@ -1,13 +1,14 @@
 using System;
 
 using System.IO;
+
 namespace iac
 {
 
     public class Program
     {
-        private const string V = @"data/qap/tai256c.dat/bur26a.dat";
 
+        
         static void Main(string[] args) {
         bool todoStandard = false;
         bool todoBaldwinian = false;
@@ -17,9 +18,23 @@ namespace iac
 
         AlgoritmoGenetico standard, baldwinian, lamarckian;
 
+        
+        int c=0;
+        string line ;
+        System.IO.StreamReader file =new System.IO.StreamReader(@"D:\archivo.txt");
 
+        while((line = file.ReadLine()) != null)  
+       {  
+         System.Console.WriteLine(line);  
+         c++;  
+       }  
+  
+       file.Close();  
+       System.Console.WriteLine("There were {0} lines.", c);  
+       // Suspend the screen.  
+       System.Console.ReadLine(); 
+       Matrices.setInput(file);
     
-        Console.WriteLine("V");
 
         if (todoStandard) {
             Console.WriteLine("*****************************************************************************************");
@@ -74,4 +89,7 @@ namespace iac
         }
     }
     }
+
+ }
+  }
 }
