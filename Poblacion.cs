@@ -17,6 +17,7 @@ namespace iac
             for (int i = 0; i < poblacion.Length; i++)
             {
                 poblacion[i]=new Individuo(tamaño);
+                poblacion[i].generateSolution();
             }
         }
 
