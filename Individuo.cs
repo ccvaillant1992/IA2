@@ -9,15 +9,15 @@ namespace iac
         private const int V = 0;
         private int[] mejorSolution;
         private int fitness;
-        private Individuo individuo;
+        //private Individuo individuo;
 
-        public Individuo(int tamaño)
+        public Individuo(int tamaño)  //Constructor que recibe el tamaño del vector como parametro
       {
        fitness=0;
        solution=new int[tamaño];
   
       }
-        public Individuo(Individuo individuo)
+        public Individuo(Individuo individuo) //Otro constructor que recibe un individuo como parametro 
         {
             solution=new int[individuo.solution.Length];
             individuo.solution.CopyTo(solution,0);

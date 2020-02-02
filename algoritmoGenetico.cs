@@ -53,7 +53,7 @@ namespace iac
                 nuevapob.calcularMejorFitness(algoritmo);
                 poblacion = nuevapob;
                 Console.WriteLine("Generacio:" + (i + 1));
-                Console.WriteLine("\tSolution:" + poblacion.obtenerMejorfitness().obtenerSolucion.ToString());
+                Console.WriteLine("Solution: " + string.Join(",", poblacion.obtenerMejorfitness().obtenerSolucion));
                 Console.WriteLine("\tFitness:" + poblacion.obtenerMejorfitness().obtenerFitness());
 
             }

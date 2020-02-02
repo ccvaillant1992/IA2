@@ -26,15 +26,15 @@ namespace iac
             Console.WriteLine("Building standard algorithm...");
             standard = new AlgoritmoGenetico(algoritmoGenetico.estándar);
             Console.WriteLine("Executing standard algorithm...");
-            iniStandard = Environment.TickCount;
+            var watch = System.Diagnostics.Stopwatch.StartNew();
             standard.Ejecutar();
-            finStandard = Environment.TickCount;
-
-            Console.WriteLine("*****************************************************************************************");
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+        
 
             Console.WriteLine("STANDARD");
-            Console.WriteLine("Time: " + (finStandard - iniStandard) / 1000);
-            Console.WriteLine("Solution: " + standard.obtenerFitness().obtenerSolucion.ToString());
+            Console.WriteLine("Time: " + (elapsedMs)+ " ms" );
+            Console.WriteLine("Solution: " + string.Join(",", standard.obtenerFitness().obtenerSolucion));
             Console.WriteLine("Fitness: " + standard.obtenerFitness().obtenerFitness());
         }
 
@@ -44,15 +44,16 @@ namespace iac
             Console.WriteLine("Building baldwinian algorithm...");
             baldwinian = new AlgoritmoGenetico(algoritmoGenetico.baldwiniana);
             Console.WriteLine("Executing baldwinian algorithm...");
-            iniBaldwinian = Environment.TickCount;
+            var watch = System.Diagnostics.Stopwatch.StartNew();
             baldwinian.Ejecutar();
-            finBaldwinian = Environment.TickCount;
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
 
-            Console.WriteLine("*****************************************************************************************");
+            
 
             Console.WriteLine("BALDWINIAN");
-            Console.WriteLine("Time: " + (finBaldwinian - iniBaldwinian) / 1000);
-            Console.WriteLine("Solution: " + baldwinian.obtenerFitness().obtenerSolucion.ToString());
+            Console.WriteLine("Time: " + (elapsedMs)+ " ms" );
+            Console.WriteLine("Solution: " + string.Join(",", baldwinian.obtenerFitness().obtenerSolucion));
             Console.WriteLine("Fitness: " + baldwinian.obtenerFitness().obtenerFitness());
         }
 
@@ -62,13 +63,16 @@ namespace iac
             Console.WriteLine("Building lamarckian algorithm...");
             lamarckian = new AlgoritmoGenetico(algoritmoGenetico.lamarckiana);
             Console.WriteLine("Executing lamarckian algorithm...");
-            iniLamarckian = Environment.TickCount;
+            var watch = System.Diagnostics.Stopwatch.StartNew();
             lamarckian.Ejecutar();
-            finLamarckian = Environment.TickCount;
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+                
+              
 
             Console.WriteLine("LAMARCKIAN");
-            Console.WriteLine("Time: " + (finLamarckian - iniLamarckian) / 1000);
-            Console.WriteLine("Solution: " + lamarckian.obtenerFitness().obtenerSolucion.ToString());
+            Console.WriteLine("Time: " + (elapsedMs)+ " ms" );
+            Console.WriteLine("Solution: " + string.Join(",", lamarckian.obtenerFitness().obtenerSolucion));
             Console.WriteLine("Fitness: " + lamarckian.obtenerFitness().obtenerFitness());
         }
     }
