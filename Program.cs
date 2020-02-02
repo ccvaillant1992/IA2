@@ -10,8 +10,8 @@ namespace iac
 
         static void Main() {
         bool esEstandar = true;
-        bool esBaldwiniano = false;
-        bool esLamarckiano = false;
+        bool esBaldwiniano = true;
+        bool esLamarckiano = true;
 
         AlgoritmoGenetico estandar, baldwiniano, lamarckiano;
 

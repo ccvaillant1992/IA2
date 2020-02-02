@@ -8,9 +8,9 @@ namespace iac
     {
         private double probMutacIndivid = 0.60; //probabilidad de mutacion por indiviuo despue del crossover
         private double probMutacGenes = 0.05; //probabilidad de mutacion por genes despues del crossover
-        private int cantGeneraciones = 5; //Numero de Generaciones
+        private int cantGeneraciones = 3; //Numero de Generaciones
         private int tamañoPoblacion = Matrices.locations; //Tamaño de la Poblacion
-        private int cantTorneo = 5; //Numero de participantes en el torneo
+        private int cantTorneo = 2; //Numero de participantes en el torneo
         private algoritmoGenetico algoritmo; //Tipo de Algoritmo Genetico
         private Poblacion poblacion; //Poblacion actual
 

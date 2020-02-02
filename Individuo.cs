@@ -27,29 +27,18 @@ namespace iac
 
         public int tamañoSolution => solution.Length;  //Obtener el tamaño del arreglo solución
         
-        public int obtenerFitness() => fitness;  //Obtener el peso
-
-        private void initializeMatrix(int i,int j) //Inicializo la matriz de distancia y peso de forma aleatoria
-      {
-        Random rand=new Random();
-        Matrices.getweights[i][j]=rand.Next(0,100);
-        Matrices.getdistance[i][j]=rand.Next(0,100);
-      }
+        public int obtenerFitness() => fitness;  //Obtener el pesoF
 
         private void solucionAleatoria()
         {
             
         for (int i = 0; i < tamañoSolution; i++)
         {
-            for (int j = 0; j < tamañoSolution; j++)
-            {
                 int pos=new Random().Next( 0, tamañoSolution-1 ); //x = generar numero aleatorio
                 int pivot=solution[i];   //{ IntercambiarPosicionVector(i,x)
                 int aux=solution[pos];
                 solution[i]=aux;
                 solution[pos]=pivot;//}
-                initializeMatrix(i,j);   //aqui aprovecho el doble for para rellenar las matrices
-            }
          }
         }
 
