@@ -9,7 +9,7 @@ namespace iac
         private double probMutacIndivid = 0.70; //probabilidad de mutacion por indiviuo despue del crossover
         private double probMutacGenes = 0.03; //probabilidad de mutacion por genes despues del crossover
         private int cantGeneraciones = 4; //Numero de Generaciones
-        private int tamañoPoblacion = 26; //Tamaño de la Poblacion
+        private int tamañoPoblacion = Matrices.locations; //Tamaño de la Poblacion
         private int cantTorneo = 3; //Numero de participantes en el torneo
         private algoritmoGenetico algoritmo; //Tipo de Algoritmo Genetico
         private Poblacion poblacion; //Poblacion actual
@@ -114,20 +114,28 @@ namespace iac
                 if (i<posicion1 || i >= posicion2)
                 {
                     int iterador = 0;
-                    while ( Individuohijo0.Contains(padre2.obtenerSolucion[iterador]))
+                    while ( iterador < tamañoPoblacion && Individuohijo0.Contains(padre2.obtenerSolucion[iterador]))
                     {
+                        if(iterador==tamañoPoblacion)
+                        {
+                            hijos[0].obtenerSolucion[i] = padre2.obtenerSolucion[iterador];
+                            Individuohijo0.Add(padre2.obtenerSolucion[iterador]);
+                        }
                         iterador++;
-                    }
-                    hijos[0].obtenerSolucion[i] = padre2.obtenerSolucion[iterador];
-                    Individuohijo0.Add(padre2.obtenerSolucion[iterador]);
 
+                    }
+                
                     iterador = 0;
-                    while ( Individuohijo1.Contains(padre1.obtenerSolucion[iterador]))
+                    while ( iterador < tamañoPoblacion && Individuohijo1.Contains(padre1.obtenerSolucion[iterador]))
                     {
+                        if(iterador==tamañoPoblacion)
+                        {
+                          hijos[1].obtenerSolucion[i] = padre1.obtenerSolucion[iterador];
+                          Individuohijo1.Add(padre1.obtenerSolucion[iterador]);
+                        }
                         iterador++;
                     }
-                    hijos[1].obtenerSolucion[i] = padre1.obtenerSolucion[iterador];
-                    Individuohijo1.Add(padre1.obtenerSolucion[iterador]);
+                  
                 }
             }
             return hijos;
