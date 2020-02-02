@@ -9,7 +9,7 @@ namespace iac
         private const int V = 0;
         private int[] mejorSolution;
         private int fitness;
-        //private Individuo individuo;
+        private Individuo individuo;
 
         public Individuo(int tamaño)  //Constructor que recibe el tamaño del vector como parametro
       {

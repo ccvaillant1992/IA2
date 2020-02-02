@@ -14,7 +14,7 @@ namespace iac
         {
             //this.path = path;
             this.lenght = 0;
-            this.path = @"qap.datos\bur26a.dat";
+            this.path = @"qap.datos\nug24.dat";
             loadData();
         }
         public void loadData()

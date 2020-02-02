@@ -10,11 +10,9 @@ namespace iac
 
      
         static void Main(string[] args) {
-        bool todoStandard = false;
+        bool todoStandard = true;
         bool todoBaldwinian = false;
-        bool todoLamarckian = true;
-
-        long iniStandard, finStandard, iniBaldwinian, finBaldwinian, iniLamarckian, finLamarckian;
+        bool todoLamarckian = false;
 
         AlgoritmoGenetico standard, baldwinian, lamarckian;
 
