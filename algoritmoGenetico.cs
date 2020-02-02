@@ -97,8 +97,8 @@ namespace iac
                 posicion2 = swap;
             }
 
-            HashSet<int> Individuohijo0 = new HashSet<int>(tamañoPoblacion);
-            HashSet<int> Individuohijo1 = new HashSet<int>(tamañoPoblacion);
+            HashSet<int> Individuohijo0 = new HashSet<int>();
+            HashSet<int> Individuohijo1 = new HashSet<int>();
             
 
             for (int i = posicion1; i < posicion2; i++)
@@ -118,8 +118,8 @@ namespace iac
                     {
                         iterador++;
                     }
-                    hijos[0].obtenerSolucion[i] = padre1.obtenerSolucion[iterador];
-                    Individuohijo0.Add(padre1.obtenerSolucion[iterador]);
+                    hijos[0].obtenerSolucion[i] = padre2.obtenerSolucion[iterador];
+                    Individuohijo0.Add(padre2.obtenerSolucion[iterador]);
 
                     iterador = 0;
                     while ( Individuohijo1.Contains(padre1.obtenerSolucion[iterador]))
