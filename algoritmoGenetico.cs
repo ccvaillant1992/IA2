@@ -6,11 +6,11 @@ namespace iac
     //Aqui empieza la clase que contiene el algoritmo genetico
     public class AlgoritmoGenetico
     {
-        private double probMutacIndivid = 0.70; //probabilidad de mutacion por indiviuo despue del crossover
-        private double probMutacGenes = 0.03; //probabilidad de mutacion por genes despues del crossover
-        private int cantGeneraciones = 4; //Numero de Generaciones
+        private double probMutacIndivid = 0.60; //probabilidad de mutacion por indiviuo despue del crossover
+        private double probMutacGenes = 0.05; //probabilidad de mutacion por genes despues del crossover
+        private int cantGeneraciones = 5; //Numero de Generaciones
         private int tamañoPoblacion = Matrices.locations; //Tamaño de la Poblacion
-        private int cantTorneo = 3; //Numero de participantes en el torneo
+        private int cantTorneo = 5; //Numero de participantes en el torneo
         private algoritmoGenetico algoritmo; //Tipo de Algoritmo Genetico
         private Poblacion poblacion; //Poblacion actual
 
@@ -23,7 +23,7 @@ namespace iac
             poblacion.calcularMejorFitness(tipo);
         }
 
-        public Individuo obtenerFitness() => poblacion.obtenerMejorfitness();
+        public Individuo obtenerFitness() => poblacion.obtenerFitness();
         //Ejecutar el algoritmo durante el numero de generaciones establecido
 
         public void Ejecutar()
@@ -49,12 +49,12 @@ namespace iac
                     nuevapob.obtnerPoblacion()[2 * j] = new Individuo(hijos[0]);
                     nuevapob.obtnerPoblacion()[2 * j + 1] = new Individuo(hijos[1]);
                 }
-                nuevapob.obtnerPoblacion()[0] = new Individuo(poblacion.obtenerMejorfitness());
+                nuevapob.obtnerPoblacion()[0] = new Individuo(poblacion.obtenerFitness());
                 nuevapob.calcularMejorFitness(algoritmo);
                 poblacion = nuevapob;
-                Console.WriteLine("Generacio:" + (i + 1));
-                Console.WriteLine("Solution: " + string.Join(",", poblacion.obtenerMejorfitness().obtenerSolucion));
-                Console.WriteLine("\tFitness:" + poblacion.obtenerMejorfitness().obtenerFitness());
+                Console.WriteLine("Generación:" + (i + 1));
+                Console.WriteLine("Solución: " + string.Join(",", poblacion.obtenerFitness().obtenerSolucion));
+                Console.WriteLine("\tFitness:" + poblacion.obtenerFitness().obtenerFitness());
 
             }
         }
@@ -73,7 +73,7 @@ namespace iac
                 } while (participantes.Contains(participante));
                 torneo.obtnerPoblacion()[i] = new Individuo(poblacion.obtnerPoblacion()[participante]);
             }
-            return torneo.obtenerMejorfitness();
+            return torneo.obtenerFitness();
         }
 
         private Individuo[] crossover(Individuo padre1, Individuo padre2)
@@ -169,9 +169,9 @@ namespace iac
 
     }
 
-    public enum algoritmoGenetico
+    public enum algoritmoGenetico  
     {
-        estándar, baldwiniana, lamarckiana
+        standar, baldwiniana, lamarckiana
     }
 
 }

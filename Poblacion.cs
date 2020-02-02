@@ -20,7 +20,7 @@ namespace iac
             }
         }
 
-           public Individuo obtenerMejorfitness()      
+           public Individuo obtenerFitness()      
         {
             Individuo fitprueba= poblacion[0];
             for(int i=1; i<poblacion.Length; i++){

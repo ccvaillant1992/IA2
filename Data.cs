@@ -14,7 +14,7 @@ namespace iac
         {
             //this.path = path;
             this.lenght = 0;
-            this.path = @"qap.datos\nug24.dat";
+            this.path = @"qap.datos\tai256c.dat";
             loadData();
         }
         public void loadData()
@@ -40,7 +40,7 @@ namespace iac
                     if (items.Length >= lenght)
                     {
 
-                        if (first)//si es la primera matrix
+                        if (first && locationIndex<lenght)//si es la primera matrix
                         {
                             locations[locationIndex] = getIntValues(items);
                             locationIndex++;
@@ -83,4 +83,3 @@ namespace iac
     }
   
 }
-

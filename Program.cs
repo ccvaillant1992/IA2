@@ -8,70 +8,69 @@ namespace iac
     public class Program
     {
 
-     
-        static void Main(string[] args) {
-        bool todoStandard = true;
-        bool todoBaldwinian = false;
-        bool todoLamarckian = false;
+        static void Main() {
+        bool esEstandar = true;
+        bool esBaldwiniano = false;
+        bool esLamarckiano = false;
 
-        AlgoritmoGenetico standard, baldwinian, lamarckian;
+        AlgoritmoGenetico estandar, baldwiniano, lamarckiano;
 
         Matrices.loadData();
 
-        if (todoStandard) {
+        if (esEstandar) {
             Console.WriteLine("*****************************************************************************************");
 
-            Console.WriteLine("Building standard algorithm...");
-            standard = new AlgoritmoGenetico(algoritmoGenetico.estándar);
-            Console.WriteLine("Executing standard algorithm...");
+            Console.WriteLine("Construyendo un algoritmo estándar");
+            estandar = new AlgoritmoGenetico(algoritmoGenetico.standar);
+            Console.WriteLine("Executando un algoritmo estándar");
             var watch = System.Diagnostics.Stopwatch.StartNew();
-            standard.Ejecutar();
+            estandar.Ejecutar();
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
         
 
-            Console.WriteLine("STANDARD");
-            Console.WriteLine("Time: " + (elapsedMs)+ " ms" );
-            Console.WriteLine("Solution: " + string.Join(",", standard.obtenerFitness().obtenerSolucion));
-            Console.WriteLine("Fitness: " + standard.obtenerFitness().obtenerFitness());
+            Console.WriteLine("Estándar");
+            Console.WriteLine("Tiempo: " + (elapsedMs)+ " ms" );
+            Console.WriteLine("Solución: " + string.Join(",", estandar.obtenerFitness().obtenerSolucion));
+            Console.WriteLine("Fitness: " + estandar.obtenerFitness().obtenerFitness());
         }
 
-        if (todoBaldwinian) {
+        if (esBaldwiniano) {
             Console.WriteLine("*****************************************************************************************");
 
-            Console.WriteLine("Building baldwinian algorithm...");
-            baldwinian = new AlgoritmoGenetico(algoritmoGenetico.baldwiniana);
-            Console.WriteLine("Executing baldwinian algorithm...");
+            Console.WriteLine("Construyendo un algoritmo baldwiniano");
+            baldwiniano = new AlgoritmoGenetico(algoritmoGenetico.baldwiniana);
+            Console.WriteLine("Executando un algoritmo baldwiniano");
             var watch = System.Diagnostics.Stopwatch.StartNew();
-            baldwinian.Ejecutar();
+            baldwiniano.Ejecutar();
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
 
             
 
-            Console.WriteLine("BALDWINIAN");
-            Console.WriteLine("Time: " + (elapsedMs)+ " ms" );
-            Console.WriteLine("Solution: " + string.Join(",", baldwinian.obtenerFitness().obtenerSolucion));
-            Console.WriteLine("Fitness: " + baldwinian.obtenerFitness().obtenerFitness());
+            Console.WriteLine("Baldwiniano");
+            Console.WriteLine("Tiempo: " + (elapsedMs)+ " ms" );
+            Console.WriteLine("Solución: " + string.Join(",", baldwiniano.obtenerFitness().obtenerSolucion));
+            Console.WriteLine("Fitness: " + baldwiniano.obtenerFitness().obtenerFitness());
         }
 
-        if (todoLamarckian) {
+        if (esLamarckiano) {
             Console.WriteLine("*****************************************************************************************");
 
-            Console.WriteLine("Building lamarckian algorithm...");
-            lamarckian = new AlgoritmoGenetico(algoritmoGenetico.lamarckiana);
-            Console.WriteLine("Executing lamarckian algorithm...");
+            Console.WriteLine("Construyendo un algoritmo lamarckiano ");
+            lamarckiano = new AlgoritmoGenetico(algoritmoGenetico.lamarckiana);
+            Console.WriteLine("Executando un algoritmo lamarckiano");
             var watch = System.Diagnostics.Stopwatch.StartNew();
-            lamarckian.Ejecutar();
+            lamarckiano.Ejecutar();
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
                 
               
 
-            Console.WriteLine("LAMARCKIAN");
-            Console.WriteLine("Time: " + (elapsedMs)+ " ms" );
-            Console.WriteLine("Solution: " + string.Join(",", lamarckian.obtenerFitness().obtenerSolucion));
-            Console.WriteLine("Fitness: " + lamarckian.obtenerFitness().obtenerFitness());
+            Console.WriteLine("Lamarckiano");
+            Console.WriteLine("Tiempo: " + (elapsedMs)+ " ms" );
+            Console.WriteLine("Solución: " + string.Join(",", lamarckiano.obtenerFitness().obtenerSolucion));
+            Console.WriteLine("Fitness: " + lamarckiano.obtenerFitness().obtenerFitness());
         }
     }
 }

@@ -2,51 +2,88 @@ using System;
 
 namespace iac
 {
-    public class Individuo{
+    public class Individuo
+    {
 
         public int[] solution { get; set; } //vector solucion
-
         private const int V = 0;
-        private int[] mejorSolution;
-        private int fitness;
-        private Individuo individuo;
+        private int[] mejorSolution;  //vector con la mejor solucion
+        private int fitness;  //Peso de la solucion 
+      
 
         public Individuo(int tamaño)  //Constructor que recibe el tamaño del vector como parametro
       {
-       fitness=0;
-       solution=new int[tamaño];
-  
+        fitness=0;
+        solution=new int[tamaño];
       }
         public Individuo(Individuo individuo) //Otro constructor que recibe un individuo como parametro 
+      {
+        solution=new int[individuo.solution.Length];
+        individuo.solution.CopyTo(solution,0);
+        fitness=individuo.fitness;
+      }
+
+        public int[] obtenerSolucion => solution; //Obtener la solucion de un individuo
+
+        public int tamañoSolution => solution.Length;  //Obtener el tamaño del arreglo solución
+        
+        public int obtenerFitness() => fitness;  //Obtener el peso
+
+        private void initializeMatrix(int i,int j) //Inicializo la matriz de distancia y peso de forma aleatoria
+      {
+        Random rand=new Random();
+        Matrices.getweights[i][j]=rand.Next(0,100);
+        Matrices.getdistance[i][j]=rand.Next(0,100);
+      }
+
+        private void solucionAleatoria()
         {
-            solution=new int[individuo.solution.Length];
-            individuo.solution.CopyTo(solution,0);
-            fitness=individuo.fitness;
-        }
-
-        public int[] obtenerSolucion => solution;
-
-        public void setValueIndex(int index,int value){
-            solution[index]=value;
-        }
-
-        public int tamañoSolution
+            
+        for (int i = 0; i < tamañoSolution; i++)
         {
-            get
+            for (int j = 0; j < tamañoSolution; j++)
             {
-                return NewMethod();
+                int pos=new Random().Next( 0, tamañoSolution-1 ); //x = generar numero aleatorio
+                int pivot=solution[i];   //{ IntercambiarPosicionVector(i,x)
+                int aux=solution[pos];
+                solution[i]=aux;
+                solution[pos]=pivot;//}
+                initializeMatrix(i,j);   //aqui aprovecho el doble for para rellenar las matrices
+            }
+         }
+        }
 
-                int NewMethod()
+        private void calculateFitness()   //Calcular coste de cada individuo
+     {    
+        for (int i = 0; i < tamañoSolution; i++)
+        {
+            for (int j = 0; j < tamañoSolution; j++)
+            {
+                if(i!=j)
                 {
-                    return solution.Length;
+                    fitness+=Matrices.getweights[i][j]*Matrices.getdistance[solution[i]][solution[j]];
                 }
             }
-        }
-        public int obtenerFitness() => fitness;
+       }
+    }
 
-        public int[] busquedaLocal() {
+        public void generateSolution()   
+      {
+        for (int i = 0; i < tamañoSolution; i++)
+        {
+        solution[i]=i;
+        }
+        solucionAleatoria();
+
+        calculateFitness();
+      }
+
+       public int[] busquedaLocal()
+    {
         Individuo mejor;
         Individuo S = new Individuo(solution.Length);
+        Individuo T = new Individuo(this);
+        T.generateSolution();
         S.generateSolution();
         do {
             mejor = new Individuo(S); // save best solution by now
@@ -54,7 +91,7 @@ namespace iac
                 for (int i = 0; i < tamañoSolution; i++) {
                 for (int j = i + 1; j < tamañoSolution; j++) {
                     // Create T exchanging i and j gene
-                    Individuo T = new Individuo(solution.Length);
+                    
                     T.solution[i]=S.solution[j];
                     T.solution[j]=S.solution[i];
                     T.updateWeight(i, j, S.obtenerSolucion); // calculate fitness of new solution
@@ -67,47 +104,10 @@ namespace iac
         return S.obtenerSolucion;
     }
 
-        
-        public void generateSolution()
-       {//Calcular coste de cada individuo
-          initializeSolution();
-          for (int i = 0; i < tamañoSolution; i++)
-          {
-            for (int j = 0; j < tamañoSolution; j++)
-            {
-                int pos=new Random().Next( 0, tamañoSolution-1 );//x = generar numero aleatorio
-                int pivot=solution[i];//{ IntercambiarPosicionVector(i,x)
-                int aux=solution[pos];
-                solution[i]=aux;
-                solution[pos]=pivot;//}
-                initializeMatrix(i,j);//aqui aprovecho el doble for para rellenar las matrices
-            }
-         }
-       }
-
-   private void initializeSolution()
-   {//relleno el vector solucion comenzando en 0 hasta n-1
-       for (int i = 0; i < tamañoSolution; i++)
-           solution[i]=i;
-   }
-
-   public void calculateweight(){    
-       //seudocodigo 5.1.2 Calcular coste de cada individuo
-        for (int i = 0; i < tamañoSolution; i++)
-        {
-            for (int j = 0; j < tamañoSolution; j++)
-            {
-                if(i!=j)
-                {
-                    fitness+=Matrices.getweights[i][j]*Matrices.getdistance[solution[i]][solution[j]];
-                }
-            }
-       }
-   }
-
-      public void calcularMejorfitness(algoritmoGenetico tipo)
+       public void calcularMejorfitness(algoritmoGenetico tipo)
        {
-        if (tipo == algoritmoGenetico.baldwiniana || tipo == algoritmoGenetico.lamarckiana) {
+        if (tipo == algoritmoGenetico.baldwiniana || tipo == algoritmoGenetico.lamarckiana) 
+        {
             if (mejorSolution == null) {
                 mejorSolution = busquedaLocal();
                 if (tipo == algoritmoGenetico.lamarckiana) {
@@ -120,21 +120,17 @@ namespace iac
                     fitness += Matrices.getweights[i][j] * Matrices.getdistance[mejorSolution[i]][mejorSolution[j]];
                 }
             }
-        } else {
+        } 
+        else 
+        {
             generateSolution();
         }
-    }
-
-
-        private void initializeMatrix(int i,int j){
-        Random rand=new Random();
-        Matrices.getweights[i][j]=rand.Next(0,100);//valor de peso aleatorio
-        Matrices.getdistance[i][j]=rand.Next(0,100);//valor de distancia aleatoria
-   }
+      }
    
-     private void updateWeight(int pos1, int pos2, int[] oldSolution){
+      private void updateWeight(int pos1, int pos2, int[] oldSolution)   //Actualizar el coste de cada individuo
+     { 
         fitness=0;
-       //seudocodigo  Actualizar el coste de cada individuo
+       
         for (int i = 0; i < Matrices.getlocations; i++)
         {
            
@@ -142,7 +138,7 @@ namespace iac
              fitness+= Matrices.getweights[pos1][i]*Matrices.getdistance[solution[pos1]][solution[i]];
 
              fitness-= Matrices.getweights[pos2][i]*Matrices.getdistance[oldSolution[pos2]][oldSolution[i]];
-            fitness+= Matrices.getweights[pos2][i]*Matrices.getdistance[solution[pos2]][solution[i]];
+             fitness+= Matrices.getweights[pos2][i]*Matrices.getdistance[solution[pos2]][solution[i]];
           
 
            if(i!=pos1 && i!=pos2){
@@ -154,13 +150,13 @@ namespace iac
            }
 
        }
-   }
-        
-     public void mutate(int pos1, int pos2) 
-     {
-        int swap = solution[pos1];
-        solution[pos1] = solution[pos2];
-        solution[pos2] = swap;
      }
+        
+         public void mutate(int pos1, int pos2) 
+       {
+         int swap = solution[pos1];
+         solution[pos1] = solution[pos2];
+         solution[pos2] = swap;
+       }
     }
 }
