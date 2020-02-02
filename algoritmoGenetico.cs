@@ -9,7 +9,7 @@ namespace iac
         private double probMutacIndivid = 0.70; //probabilidad de mutacion por indiviuo despue del crossover
         private double probMutacGenes = 0.03; //probabilidad de mutacion por genes despues del crossover
         private int cantGeneraciones = 4; //Numero de Generaciones
-        private int tamañoPoblacion = 5; //Tamaño de la Poblacion
+        private int tamañoPoblacion = 26; //Tamaño de la Poblacion
         private int cantTorneo = 3; //Numero de participantes en el torneo
         private algoritmoGenetico algoritmo; //Tipo de Algoritmo Genetico
         private Poblacion poblacion; //Poblacion actual
@@ -93,18 +93,20 @@ namespace iac
             if (posicion2 < posicion1)
             {
                 int swap = posicion1;
+                posicion1=posicion2;
                 posicion2 = swap;
             }
 
-            HashSet<int> Individuohijo0 = new HashSet<int>();
-            HashSet<int> Individuohijo1 = new HashSet<int>();
+            HashSet<int> Individuohijo0 = new HashSet<int>(tamañoPoblacion);
+            HashSet<int> Individuohijo1 = new HashSet<int>(tamañoPoblacion);
+            
 
             for (int i = posicion1; i < posicion2; i++)
             {
                 hijos[0].obtenerSolucion[i] = padre1.obtenerSolucion[i];
                 Individuohijo0.Add(hijos[0].obtenerSolucion[i]);
 
-                hijos[1].obtenerSolucion[i] = padre1.obtenerSolucion[i];
+                hijos[1].obtenerSolucion[i] = padre2.obtenerSolucion[i];
                 Individuohijo1.Add(hijos[1].obtenerSolucion[i]);
             }
             for (int i = 0; i < Matrices.getlocations; i++)
@@ -112,7 +114,7 @@ namespace iac
                 if (i<posicion1 || i >= posicion2)
                 {
                     int iterador = 0;
-                    while (Individuohijo0.Contains(padre1.obtenerSolucion[iterador]))
+                    while ( Individuohijo0.Contains(padre2.obtenerSolucion[iterador]))
                     {
                         iterador++;
                     }
@@ -120,7 +122,7 @@ namespace iac
                     Individuohijo0.Add(padre1.obtenerSolucion[iterador]);
 
                     iterador = 0;
-                    while (Individuohijo1.Contains(padre1.obtenerSolucion[iterador]))
+                    while ( Individuohijo1.Contains(padre1.obtenerSolucion[iterador]))
                     {
                         iterador++;
                     }
