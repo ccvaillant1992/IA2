@@ -1,2 +1,2 @@
 # IA2
-Repositorio con todos los cambios nuevos
+Repositorio para el trabajo final de la asignatuta Inteligencia Artificial 
